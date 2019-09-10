@@ -25,35 +25,11 @@ nav, .page-footer {
 
 #info-table > div {
   background-color: white;
+  padding: 3%;
 }
 
 .search {
+  display: grid;
 }
 .table-view {
-}
-
-
-
-#stream-page {
-   display: grid;
-   margin-top: 3%;
-   grid-gap: 1.5em;
-   grid-template-columns: repeat(10, 1fr);
-   grid-template-areas:
-      "c c c s s s s s l l"
-      "c c c s s s s s l l"
-      "n n n n n n n n n n"
-      "h h h h h h h h h h";
-}
-#stream-page > div {
-   display: grid;
-   border-radius: 5px;
-}
-.fr-cameras-picker {
-   grid-area: c;
-   background-color: white;
-}
-.fr-stream {
-   grid-area: s;
-   background-color: white;
 }
