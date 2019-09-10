@@ -9,7 +9,7 @@ main {
   flex: 1 0 auto;
 }
 nav, .page-footer {
-  background-color: orange;
+  background-color: #ffb52e;
 }
 .nav-wrapper {
   padding: 0px 30px;
