@@ -1,15 +1,32 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #fafafa91;
+}
+
+main {
+  flex: 1 0 auto;
+}
+nav, .page-footer {
+  background-color: orange;
+}
+.nav-wrapper {
+  padding: 0px 30px;
+}
+
 #info-table {
   display: grid;
 
 }
 
 #info-table > div {
-  
+
 }
 
 .search {
-
+  background-color: red;
 }
 .table-view {
-
+  background-color: blue;
 }
