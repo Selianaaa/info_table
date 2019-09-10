@@ -1,6 +1,10 @@
 //  TODO: add jquery with autocomplete
 $(document).ready(function(){
-  $('.modal').modal();
+  $('.modal').modal({
+    inDuration: 500,
+    outDuration: 600,
+    opacity: 0.7,
+  });
 });
 
 const url = "http://www.filltext.com/?rows=3&id={number|1000}\
