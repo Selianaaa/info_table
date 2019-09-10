@@ -37,17 +37,32 @@
             <table>
               <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="person in persons" @click="getMoreInfo(person)">
+                <tr v-for="person in persons" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
                   <td v-text="person.id"></td>
                   <td v-text="person.firstName"></td>
                   <td v-text="person.lastName"></td>
                 </tr>
+                <div id="modal1" class="modal bottom-sheet">
+                  <div class="modal-content">
+                    <h4>Full Person Info</h4>
+                    <p>ID: {{ fullPersonInfo.id }}</p>
+                    <p>First Name: {{ fullPersonInfo.firstName }}</p>
+                    <p>Last Name: {{ fullPersonInfo.lastName }}</p>
+                    <p>Email: {{ fullPersonInfo.email }}</p>
+                    <p>Phone: {{ fullPersonInfo.phone }}</p>
+                    <!-- <p>Street Address: {{ fullPersonInfo.address.streetAddress }}</p>
+                    <p>City: {{ fullPersonInfo.address.city }}</p>
+                    <p>Zip Code: {{ fullPersonInfo.address.zip }}</p>
+                    <p>State: {{ fullPersonInfo.address.state }}</p> -->
+                    <p>Description: {{ fullPersonInfo.description }}</p>
+                  </div>
+                </div>
               </tbody>
             </table>
           </div>
@@ -61,7 +76,6 @@
     </footer>
     <!-- Compiled and minified JavaScript -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="info_table.js"></script>
   </body>

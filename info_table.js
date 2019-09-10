@@ -1,4 +1,7 @@
 //  TODO: add jquery with autocomplete
+$(document).ready(function(){
+  $('.modal').modal();
+});
 
 const url = "http://www.filltext.com/?rows=3&id={number|1000}\
 &firstName={firstName}&delay=3&lastName={lastName}\
@@ -20,13 +23,14 @@ new Vue({
         if (response.data.length != 0) {
           this.persons = response.data;
         } else {
-          M.toast({html: "No data", classes: 'rounded'})
+          M.toast({html: "No data", classes: 'rounded'});
         };
       });
     },
     getMoreInfo: function(person) {
       this.fullPersonInfo = person;
-      console.log(this.fullPersonInfo);
+      console.log(this.fullPersonInfo.address.zip);
+      $('modal1').modal('open');
     }
   },
   mounted() {
