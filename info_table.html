@@ -30,11 +30,26 @@
             <div class="input-field">
               <i class="material-icons prefix">search</i>
               <input type="text" id="autocomplete-input" class="autocomplete">
-              <label for="autocomplete-input"> search by Id, First name, Last name </label>
+              <label for="autocomplete-input"> Search by Id, First Name, Last Name </label>
             </div>
           </div>
           <div class="table-view z-depth-1">
-            {{ events }}
+            <table>
+              <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="person in persons">
+                  <td v-text="person.id"></td>
+                  <td v-text="person.firstName"></td>
+                  <td v-text="person.lastName"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ nav, .page-footer {
   display: grid;
   margin-top: 7%;
   grid-gap: 2em;
-  grid-template-rows: 30% 70%;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr;
 }
 
