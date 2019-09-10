@@ -43,7 +43,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="person in persons">
+                <tr v-for="person in persons" @click="getMoreInfo(person)">
                   <td v-text="person.id"></td>
                   <td v-text="person.firstName"></td>
                   <td v-text="person.lastName"></td>

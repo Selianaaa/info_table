@@ -25,11 +25,18 @@ nav, .page-footer {
 
 #info-table > div {
   background-color: white;
-  padding: 3%;
+  padding: 2%;
 }
 
 .search {
   display: grid;
 }
 .table-view {
+  display: grid;
+}
+table {
+  display: grid;
+}
+tbody > tr {
+  cursor: pointer;
 }

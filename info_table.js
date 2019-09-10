@@ -10,6 +10,7 @@ new Vue({
   data() {
     return {
       persons: null,
+      fullPersonInfo: {},
     };
   },
   methods: {
@@ -23,6 +24,10 @@ new Vue({
         };
       });
     },
+    getMoreInfo: function(person) {
+      this.fullPersonInfo = person;
+      console.log(this.fullPersonInfo);
+    }
   },
   mounted() {
     this.getEvents();
