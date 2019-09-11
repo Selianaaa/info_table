@@ -40,3 +40,7 @@ table {
 tbody > tr {
   cursor: pointer;
 }
+
+tbody > tr:hover {
+  background-color: #ffb52e3b;
+}
