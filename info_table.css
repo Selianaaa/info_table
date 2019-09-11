@@ -19,23 +19,26 @@ nav, .page-footer {
   display: grid;
   margin-top: 7%;
   grid-gap: 2em;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
 }
 
 #info-table > div {
   background-color: white;
-  padding: 1% 5%;
 }
 
 .search {
   display: grid;
+  padding: 1% 5%;
 }
 .table-view {
   display: grid;
+  padding: 1%;
+  height: calc(50vh - 10px);
+  overflow-y: auto;
 }
 table {
-  display: grid;
+  /* display: grid; */
 }
 tbody > tr {
   cursor: pointer;
@@ -43,4 +46,7 @@ tbody > tr {
 
 tbody > tr:hover {
   background-color: #ffb52e3b;
+}
+.modal.bottom-sheet {
+  border-radius: 5px 5px 0px 0px;
 }
