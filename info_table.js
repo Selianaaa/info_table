@@ -20,18 +20,18 @@ new Vue({
       // persons: null,
       persons: [
         {
-          id: 55,
-          firstName: 'Ran-D',
+          id: '55',
+          firstName: 'Ran',
           lastName: 'Teadori',
         },
         {
-          id: 535,
-          firstName: 'Ran-M',
+          id: '535',
+          firstName: 'Unresolved',
           lastName: 'Pface',
         },
         {
-          id: 33,
-          firstName: 'Ran-P',
+          id: '33',
+          firstName: 'E-force',
           lastName: 'Teadorirr',
         },
       ],
@@ -41,16 +41,19 @@ new Vue({
     };
   },
   methods: {
+    //  Get json from api and convert id to string
     getEvents: function() {
       //  TODO: make rows = 1000
       axios.get(url).then(response => {
         if (response.data.length != 0) {
           this.persons = response.data;
+          this.persons.forEach(person => person.id += '');
         } else {
           M.toast({html: "No data", classes: 'rounded'});
         };
       });
     },
+    //  Get more info about clicked person in modal
     getMoreInfo: function(person) {
       this.fullPersonInfo = person;
       console.log(this.fullPersonInfo.address.zip);
@@ -58,12 +61,11 @@ new Vue({
     }
   },
   watch: {
+    // watch search input changes and display matchin persons
     searchInput: function() {
-      var elementNumber = '' + this.searchInput;
-      this.searchResults.push(
-        this.persons.filter(el => el.firstName.indexOf(this.searchInput) !== -1),
-        this.persons.filter(el => el.lastName.indexOf(this.searchInput) !== -1)
-      );
+      // this.searchResults = this.persons.filter(el => el.firstName.indexOf(this.searchInput) !== -1);
+      this.searchResults = this.persons.filter(el => el.id.indexOf(this.searchInput) !== -1);
+      var lastNameFilter = this.persons.filter(el => el.lastName.indexOf(this.searchInput) !== -1);
       console.log(this.searchResults);
     },
   },

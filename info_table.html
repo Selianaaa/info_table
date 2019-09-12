@@ -42,29 +42,36 @@
                   <th>Last Name</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-if="searchInput === '' ">
                 <tr v-for="person in persons" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
                   <td v-text="person.id"></td>
                   <td v-text="person.firstName"></td>
                   <td v-text="person.lastName"></td>
                 </tr>
-                <div id="modal1" class="modal bottom-sheet">
-                  <div class="modal-content">
-                    <h4>Full Person Info:</h4>
-                    <p>ID: {{ fullPersonInfo.id }}</p>
-                    <p>First Name: {{ fullPersonInfo.firstName }}</p>
-                    <p>Last Name: {{ fullPersonInfo.lastName }}</p>
-                    <p>Email: {{ fullPersonInfo.email }}</p>
-                    <p>Phone: {{ fullPersonInfo.phone }}</p>
-                    <!-- <p>Street Address: {{ fullPersonInfo.address.streetAddress }}</p>
-                    <p>City: {{ fullPersonInfo.address.city }}</p>
-                    <p>Zip Code: {{ fullPersonInfo.address.zip }}</p>
-                    <p>State: {{ fullPersonInfo.address.state }}</p> -->
-                    <p>Description: {{ fullPersonInfo.description }}</p>
-                  </div>
-                </div>
+              </tbody>
+              <tbody v-else>
+                <tr v-for="person in searchResults" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
+                  <td v-text="person.id"></td>
+                  <td v-text="person.firstName"></td>
+                  <td v-text="person.lastName"></td>
+                </tr>
               </tbody>
             </table>
+            <div id="modal1" class="modal bottom-sheet">
+              <div class="modal-content">
+                <h4>Full Person Info:</h4>
+                <p>ID: {{ fullPersonInfo.id }}</p>
+                <p>First Name: {{ fullPersonInfo.firstName }}</p>
+                <p>Last Name: {{ fullPersonInfo.lastName }}</p>
+                <p>Email: {{ fullPersonInfo.email }}</p>
+                <p>Phone: {{ fullPersonInfo.phone }}</p>
+                <!-- <p>Street Address: {{ fullPersonInfo.address.streetAddress }}</p>
+                <p>City: {{ fullPersonInfo.address.city }}</p>
+                <p>Zip Code: {{ fullPersonInfo.address.zip }}</p>
+                <p>State: {{ fullPersonInfo.address.state }}</p> -->
+                <p>Description: {{ fullPersonInfo.description }}</p>
+              </div>
+            </div>
           </div>
           <div>
             <p style="font-size: 0.8em">Click on table row to get more info.</p>
