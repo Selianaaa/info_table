@@ -26,11 +26,11 @@ nav, .page-footer {
 }
 
 #info-table > div {
-  display: grid;
   background-color: white;
 }
 
 .search {
+  display: grid;
   padding: 0% 5%;
 }
 
