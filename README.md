@@ -1,4 +1,4 @@
 # info_table
-Web-application get json data from api (http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}hone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}) and display in table.
+Web-application gets json data from api (http://www.filltext.com/?rows=1000&id={number|1000}&firstName={firstName}&delay=3&lastName={lastName}&email={email}hone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}) and display in table.
 There is an opportunity to search by Id, First Name and Last Name.
 Clickin in row to get more person info in modal.
