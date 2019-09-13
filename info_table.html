@@ -59,17 +59,16 @@
             </table>
             <div id="modal1" class="modal bottom-sheet">
               <div class="modal-content">
-                <h4>Full Person Info:</h4>
-                <p>ID: {{ fullPersonInfo.id }}</p>
+                <h4>Full Person Info</h4>
+                <p> <b>ID:</b> {{ fullPersonInfo.id }}</p>
                 <p>First Name: {{ fullPersonInfo.firstName }}</p>
                 <p>Last Name: {{ fullPersonInfo.lastName }}</p>
                 <p>Email: {{ fullPersonInfo.email }}</p>
                 <p>Phone: {{ fullPersonInfo.phone }}</p>
-                <!-- <p>Street Address: {{ fullPersonInfo.address.streetAddress }}</p>
-                <p>City: {{ fullPersonInfo.address.city }}</p>
-                <p>Zip Code: {{ fullPersonInfo.address.zip }}</p>
-                <p>State: {{ fullPersonInfo.address.state }}</p> -->
-                <p>Description: {{ fullPersonInfo.description }}</p>
+                <template v-if="fullPersonInfo.address">
+                  <p>Address: {{ fullPersonInfo.address.streetAddress }} {{ fullPersonInfo.address.city }} {{ fullPersonInfo.address.zip }} State: {{ fullPersonInfo.address.state }}</p>
+                  <p>Description: {{ fullPersonInfo.description }}</p>
+                </template>
               </div>
             </div>
           </div>
@@ -93,8 +92,7 @@
 
 
 <!-- TODO:
-1. search;
-2. address in modal;
+1. address in modal;
 3. footer and nav color;
 -->
 
