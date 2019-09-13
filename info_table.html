@@ -60,46 +60,33 @@
             <div id="modal1" class="modal bottom-sheet">
               <div class="modal-content">
                 <h4>Full Person Info</h4>
-                <p> <b>ID:</b> {{ fullPersonInfo.id }}</p>
-                <p>First Name: {{ fullPersonInfo.firstName }}</p>
-                <p>Last Name: {{ fullPersonInfo.lastName }}</p>
-                <p>Email: {{ fullPersonInfo.email }}</p>
-                <p>Phone: {{ fullPersonInfo.phone }}</p>
+                <p><b>ID:</b> {{ fullPersonInfo.id }}</p>
+                <p><b>First Name:</b> {{ fullPersonInfo.firstName }}</p>
+                <p><b>Last Name:</b> {{ fullPersonInfo.lastName }}</p>
+                <p><b>Email:</b> {{ fullPersonInfo.email }}</p>
+                <p><b>Phone:</b> {{ fullPersonInfo.phone }}</p>
                 <template v-if="fullPersonInfo.address">
-                  <p>Address: {{ fullPersonInfo.address.streetAddress }} {{ fullPersonInfo.address.city }} {{ fullPersonInfo.address.zip }} State: {{ fullPersonInfo.address.state }}</p>
-                  <p>Description: {{ fullPersonInfo.description }}</p>
+                  <p>
+                    <b>Address:</b>
+                    {{ fullPersonInfo.address.streetAddress }},
+                    {{ fullPersonInfo.address.city }},
+                    {{ fullPersonInfo.address.state }} {{ fullPersonInfo.address.zip }}
+                  </p>
                 </template>
+                <p><b>Description:</b> {{ fullPersonInfo.description }}</p>
               </div>
             </div>
-          </div>
-          <div>
-            <p style="font-size: 0.8em">Click on table row to get more info.</p>
           </div>
         </div>
       </div>
     </main>
     <footer class="page-footer">
       <div class="footer-copyright">
-        <div class="container"> © 2019</div>
+        <div class="container">© 2019</div>
       </div>
     </footer>
-    <!-- Compiled and minified JavaScript -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="info_table.js"></script>
   </body>
 </html>
-
-
-<!-- TODO:
-1. address in modal;
-3. footer and nav color;
--->
-
-
-<b-form-input
-             v-model="filter"
-             type="search"
-             id="filterInput"
-             placeholder="Type to Search"
-           ></b-form-input>

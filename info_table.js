@@ -21,6 +21,7 @@ new Vue({
       searchResults: [],
     };
   },
+
   methods: {
 
     //  Get json from api and convert id to string
@@ -46,6 +47,7 @@ new Vue({
   },
 
   watch: {
+
     // watch search input changes and display matchin persons
     searchInput: function() {
     this.searchResults = this.persons.filter(
@@ -55,6 +57,7 @@ new Vue({
       );
     },
   },
+  
   mounted() {
     this.getEvents();
   },
