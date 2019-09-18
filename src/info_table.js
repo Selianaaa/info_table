@@ -15,7 +15,7 @@ new Vue({
   el: '#info-table',
   data() {
     return {
-      persons: [],
+      persons: null,
       fullPersonInfo: {},
       searchInput: '',
       searchResults: [],
