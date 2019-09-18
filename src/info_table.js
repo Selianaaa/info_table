@@ -5,8 +5,8 @@ $(document).ready(function(){
     opacity: 0.7,
   });
 });
-
-url = "http://www.filltext.com/?rows=1000&id={number|1000}" +
+//  change rows to 1000
+url = "http://www.filltext.com/?rows=5&id={number|1000}" +
 "&firstName={firstName}&delay=3&lastName={lastName}&email={email}" +
 "&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}" +
 "&description={lorem|32}";
@@ -26,13 +26,15 @@ new Vue({
 
     //  Get json from api and convert id to string
     getEvents: function() {
-      //  TODO: make rows = 1000
+      //  TODO: 500 404 status pages
       axios.get(url).then(response => {
-        if (response.data.length != 0) {
+        if (response.status === 200) {
           this.persons = response.data;
           this.persons.forEach(person => person.id += '');
-        } else {
-          M.toast({html: "No data", classes: 'rounded'});
+        } else if (response.status === 404) {
+          M.toast({html: "Not Found", classes: 'rounded'});
+        } else if (response.status === 500) {
+          M.toast({html: "Enternal Server Error", classes: 'rounded'});
         };
       });
     },
