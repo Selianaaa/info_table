@@ -23,10 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="person in searchResults">
-          <td :key="person.id"></td>
-          <td :key="person.firstName"></td>
-          <td :key="person.lastName"></td>
+        <tr v-for="person of persons" :key="person.id">
+          <td>{{ person.id }}</td>
+          <td>{{ person.firstName }}</td>
+          <td>{{ person.lastName }}</td>
         </tr>
       </tbody>
     </table>
