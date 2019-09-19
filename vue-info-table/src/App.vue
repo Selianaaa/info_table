@@ -22,14 +22,40 @@
           <th>Last Name</th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="person of persons" :key="person.id">
+      <tbody v-if="searchInput === '' ">
+        <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
+          <td>{{ person.id }}</td>
+          <td>{{ person.firstName }}</td>
+          <td>{{ person.lastName }}</td>
+        </tr>
+      </tbody>
+      <tbody v-else>
+        <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
           <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
         </tr>
       </tbody>
     </table>
+    <div id="modal1" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Full Person Info</h4>
+        <p><b>ID:</b> {{ fullPersonInfo.id }}</p>
+        <p><b>First Name:</b> {{ fullPersonInfo.firstName }}</p>
+        <p><b>Last Name:</b> {{ fullPersonInfo.lastName }}</p>
+        <p><b>Email:</b> {{ fullPersonInfo.email }}</p>
+        <p><b>Phone:</b> {{ fullPersonInfo.phone }}</p>
+        <template v-if="fullPersonInfo.address">
+          <p>
+            <b>Address:</b>
+            {{ fullPersonInfo.address.streetAddress }},
+            {{ fullPersonInfo.address.city }},
+            {{ fullPersonInfo.address.state }} {{ fullPersonInfo.address.zip }}
+          </p>
+        </template>
+        <p><b>Description:</b> {{ fullPersonInfo.description }}</p>
+      </div>
+    </div>
   </div>
   <MainPage/>
 </div>
@@ -70,17 +96,28 @@ export default {
           M.toast({html: "Not Found", classes: 'rounded'});
         } else if (response.status === 500) {
           M.toast({html: "Enternal Server Error", classes: 'rounded'});
-        };
+        }
       });
     },
 
     //  Get more info about clicked person in modal
     getMoreInfo: function(person) {
       this.fullPersonInfo = person;
-      var instance = M.Modal.getInstance('modal1');
-      instance.open();
     },
   },
+
+  watch: {
+
+    // watch search input changes and display matchin persons
+    searchInput: function() {
+    this.searchResults = this.persons.filter(
+      el => el.id.indexOf(this.searchInput) !== -1 ||
+      el.firstName.indexOf(this.searchInput) !== -1 ||
+      el.lastName.indexOf(this.searchInput) !== -1
+      );
+    },
+  },
+
   mounted() {
   this.getEvents();
   },
