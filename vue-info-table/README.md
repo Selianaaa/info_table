@@ -1,4 +1,4 @@
-# info-table-cli
+# vue-info-table
 
 ## Project setup
 ```
