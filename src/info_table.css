@@ -36,7 +36,7 @@ nav, .page-footer {
 
 .table-view {
   padding: 1%;
-  height: calc(65vh - 10px);
+  height: calc(60vh - 10px);
   overflow-y: auto;
 }
 
