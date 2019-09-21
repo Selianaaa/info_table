@@ -48,7 +48,7 @@ tbody > tr:hover {
 
 .modal.bottom-sheet {
   border-radius: 5px 5px 0px 0px;
-  height: 130% !important ;
+  max-height: 100% !important ;
 }
 
 .modal.modal-content {
