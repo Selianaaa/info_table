@@ -1,64 +1,78 @@
 <template>
-<div id="app">
-  <div class="search z-depth-1">
-    <div class="input-field">
-      <i class="material-icons prefix">search</i>
-      <input type="text" id="search-input-field" v-model="searchInput">
-      <label for="search-input-field"> Search by Id, First Name, Last Name </label>
-    </div>
-  </div>
-  <div v-if="persons === null" class="table-view z-depth-1 valign-wrapper">
-    <div class="progress light-green lighten-4">
-      <div class="indeterminate light-green">
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo">Table info</a>
       </div>
-    </div>
-  </div>
-  <div v-else class="table-view z-depth-1">
-    <table class="centered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-        </tr>
-      </thead>
-      <tbody v-if="searchInput === '' ">
-        <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
-          <td>{{ person.id }}</td>
-          <td>{{ person.firstName }}</td>
-          <td>{{ person.lastName }}</td>
-        </tr>
-      </tbody>
-      <tbody v-else>
-        <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
-          <td>{{ person.id }}</td>
-          <td>{{ person.firstName }}</td>
-          <td>{{ person.lastName }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div id="modal1" class="modal bottom-sheet">
-      <div class="modal-content">
-        <h4>Full Person Info</h4>
-        <p><b>ID:</b> {{ fullPersonInfo.id }}</p>
-        <p><b>First Name:</b> {{ fullPersonInfo.firstName }}</p>
-        <p><b>Last Name:</b> {{ fullPersonInfo.lastName }}</p>
-        <p><b>Email:</b> {{ fullPersonInfo.email }}</p>
-        <p><b>Phone:</b> {{ fullPersonInfo.phone }}</p>
-        <template v-if="fullPersonInfo.address">
-          <p>
-            <b>Address:</b>
-            {{ fullPersonInfo.address.streetAddress }},
-            {{ fullPersonInfo.address.city }},
-            {{ fullPersonInfo.address.state }} {{ fullPersonInfo.address.zip }}
-          </p>
-        </template>
-        <p><b>Description:</b> {{ fullPersonInfo.description }}</p>
+    </nav>
+    <main>
+      <div class="container">
+        <div id="table-info">
+          <div class="search z-depth-1">
+            <div class="input-field">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="search-input-field" v-model="searchInput">
+              <label for="search-input-field"> Search by Id, First Name, Last Name </label>
+            </div>
+          </div>
+          <div v-if="persons === null" class="table-view z-depth-1 valign-wrapper">
+            <div class="progress light-green lighten-4">
+              <div class="indeterminate light-green">
+              </div>
+            </div>
+          </div>
+          <div v-else class="table-view z-depth-1">
+            <table class="centered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody v-if="searchInput === '' ">
+                <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
+                  <td>{{ person.id }}</td>
+                  <td>{{ person.firstName }}</td>
+                  <td>{{ person.lastName }}</td>
+                </tr>
+              </tbody>
+              <tbody v-else>
+                <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
+                  <td>{{ person.id }}</td>
+                  <td>{{ person.firstName }}</td>
+                  <td>{{ person.lastName }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div id="modal1" class="modal bottom-sheet">
+              <div class="modal-content">
+                <h4>Full Person Info</h4>
+                <p><b>ID:</b> {{ fullPersonInfo.id }}</p>
+                <p><b>First Name:</b> {{ fullPersonInfo.firstName }}</p>
+                <p><b>Last Name:</b> {{ fullPersonInfo.lastName }}</p>
+                <p><b>Email:</b> {{ fullPersonInfo.email }}</p>
+                <p><b>Phone:</b> {{ fullPersonInfo.phone }}</p>
+                <template v-if="fullPersonInfo.address">
+                  <p>
+                    <b>Address:</b>
+                    {{ fullPersonInfo.address.streetAddress }},
+                    {{ fullPersonInfo.address.city }},
+                    {{ fullPersonInfo.address.state }} {{ fullPersonInfo.address.zip }}
+                  </p>
+                </template>
+                <p><b>Description:</b> {{ fullPersonInfo.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <MainPage/>
-</div>
+    </main>
+    <!--  TODO: delete footer or make body css grid -->
+    <footer class="page-footer">
+        <div class="container">© 2019</div>
+    </footer>
+  </body>
 </template>
 
 <script>

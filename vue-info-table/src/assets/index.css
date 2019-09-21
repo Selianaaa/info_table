@@ -1,7 +1,6 @@
-
 body {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   background-color: #fafafa91;
   margin: 0;
@@ -9,14 +8,13 @@ body {
 
 main {
   flex: 1 0 auto;
-  height: 85vh;
 }
 
 .nav-wrapper {
   padding: 0px 30px;
 }
 
-#app {
+#table-info {
   display: grid;
   margin-top: 3%;
   margin-bottom: 3%;
@@ -25,7 +23,7 @@ main {
   grid-template-columns: 1fr;
 }
 
-#app > div {
+#table-info > div {
   background-color: white;
 }
 
