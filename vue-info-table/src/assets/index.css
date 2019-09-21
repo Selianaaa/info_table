@@ -11,9 +11,7 @@ main {
   flex: 1 0 auto;
   height: 85vh;
 }
-nav, .page-footer {
-  background-color: #8bc34a;
-}
+
 .nav-wrapper {
   padding: 0px 30px;
 }
@@ -34,9 +32,6 @@ nav, .page-footer {
 .search {
   display: grid;
   padding: 0% 5%;
-}
-.input-field {
-  color: #8bc34a;
 }
 
 .table-view {
