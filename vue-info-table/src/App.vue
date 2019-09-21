@@ -11,7 +11,7 @@
           <div class="search z-depth-1">
             <div class="input-field">
               <i class="material-icons prefix">search</i>
-              <input type="text" id="search-input-field" v-bind:value="searchInput" v-on:input="searchInput = $event.target.value"></input>
+              <input type="text" id="search-input-field" v-bind:value="searchInput" v-on:input="searchInput = $event.target.value">
               <label for="search-input-field"> Search by Id, First Name, Last Name </label>
             </div>
           </div>
@@ -31,14 +31,14 @@
                 </tr>
               </thead>
               <tbody v-if="searchInput === '' ">
-                <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
+                <tr v-for="person of persons" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
                   <td>{{ person.id }}</td>
                   <td>{{ person.firstName }}</td>
                   <td>{{ person.lastName }}</td>
                 </tr>
               </tbody>
               <tbody v-else>
-                <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
+                <tr v-for="person of searchResults" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
                   <td>{{ person.id }}</td>
                   <td>{{ person.firstName }}</td>
                   <td>{{ person.lastName }}</td>
