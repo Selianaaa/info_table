@@ -23,14 +23,14 @@
         </tr>
       </thead>
       <tbody v-if="searchInput === '' ">
-        <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
+        <tr v-for="person of persons" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
           <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
         </tr>
       </tbody>
       <tbody v-else>
-        <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#modal1" @click="getMoreInfo(person)">
+        <tr v-for="person of searchResults" :key="person.id" class="modal-trigger" href="#" data-target="modal1" @click="getMoreInfo(person)">
           <td>{{ person.id }}</td>
           <td>{{ person.firstName }}</td>
           <td>{{ person.lastName }}</td>
@@ -70,6 +70,7 @@ const url = "http://www.filltext.com/?rows=5&id={number|1000}" +
 "&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}" +
 "&description={lorem|32}";
 
+
 export default {
   name: 'app',
   components: {
@@ -81,6 +82,7 @@ export default {
       fullPersonInfo: {},
       searchInput: '',
       searchResults: [],
+      modalInstance: null,
     };
   },
   methods: {
@@ -103,6 +105,15 @@ export default {
     //  Get more info about clicked person in modal
     getMoreInfo: function(person) {
       this.fullPersonInfo = person;
+      const modal = document.querySelector('.modal');
+      this.modalInstance = M.Modal.init(modal,
+        {
+          inDuration: 500,
+          outDuration: 600,
+          opacity: 0.7,
+        }
+      );
+      this.modalInstance.open();
     },
   },
 
