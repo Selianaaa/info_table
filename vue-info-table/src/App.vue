@@ -11,7 +11,7 @@
           <div class="search z-depth-1">
             <div class="input-field">
               <i class="material-icons prefix">search</i>
-              <input type="text" id="search-input-field" v-model="searchInput">
+              <input type="text" id="search-input-field" v-bind:value="searchInput" v-on:input="searchInput = $event.target.value"></input>
               <label for="search-input-field"> Search by Id, First Name, Last Name </label>
             </div>
           </div>
@@ -47,7 +47,7 @@
             </table>
             <div id="modal1" class="modal bottom-sheet">
               <div class="modal-content">
-                <h4>Full Person Info</h4>
+                <h4>Full Personal Info</h4>
                 <p><b>ID:</b> {{ fullPersonInfo.id }}</p>
                 <p><b>First Name:</b> {{ fullPersonInfo.firstName }}</p>
                 <p><b>Last Name:</b> {{ fullPersonInfo.lastName }}</p>
@@ -68,7 +68,6 @@
         </div>
       </div>
     </main>
-    <!--  TODO: delete footer or make body css grid -->
     <footer class="page-footer">
         <div class="container">© 2019</div>
     </footer>
@@ -76,10 +75,9 @@
 </template>
 
 <script>
-import MainPage from './components/MainPage';
 import axios from 'axios';
 
-const url = "http://www.filltext.com/?rows=50&id={number|1000}" +
+const url = "http://www.filltext.com/?rows=1000&id={number|1000}" +
 "&firstName={firstName}&delay=3&lastName={lastName}&email={email}" +
 "&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}" +
 "&description={lorem|32}";
@@ -87,9 +85,6 @@ const url = "http://www.filltext.com/?rows=50&id={number|1000}" +
 
 export default {
   name: 'app',
-  components: {
-    MainPage,
-  },
   data() {
     return {
       persons: null,
@@ -111,7 +106,7 @@ export default {
         } else if (response.status === 404) {
           M.toast({html: "Not Found", classes: 'rounded'});
         } else if (response.status === 500) {
-          M.toast({html: "Enternal Server Error", classes: 'rounded'});
+          M.toast({html: "Internal Server Error", classes: 'rounded'});
         }
       });
     },
@@ -135,17 +130,17 @@ export default {
 
     // watch search input changes and display matchin persons
     searchInput: function() {
-    this.searchInput = this.searchInput[0].toUpperCase() + this.searchInput.slice(1);
-    this.searchResults = this.persons.filter(
-      el => el.id.indexOf(this.searchInput) !== -1 ||
-      el.firstName.indexOf(this.searchInput) !== -1 ||
-      el.lastName.indexOf(this.searchInput) !== -1
+      this.searchInput = this.searchInput[0].toUpperCase() + this.searchInput.slice(1);
+      this.searchResults = this.persons.filter(
+        el => el.id.indexOf(this.searchInput) !== -1 ||
+        el.firstName.indexOf(this.searchInput) !== -1 ||
+        el.lastName.indexOf(this.searchInput) !== -1
       );
     },
   },
 
   mounted() {
-  this.getEvents();
+    this.getEvents();
   },
 }
 </script>

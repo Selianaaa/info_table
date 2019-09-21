@@ -43,7 +43,7 @@ tbody > tr {
 }
 
 tbody > tr:hover {
-  background-color: #ccff90;
+  background-color: #ccff908f;
 }
 
 .modal.bottom-sheet {
