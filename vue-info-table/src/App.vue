@@ -135,6 +135,7 @@ export default {
 
     // watch search input changes and display matchin persons
     searchInput: function() {
+    this.searchInput = this.searchInput[0].toUpperCase() + this.searchInput.slice(1);
     this.searchResults = this.persons.filter(
       el => el.id.indexOf(this.searchInput) !== -1 ||
       el.firstName.indexOf(this.searchInput) !== -1 ||
